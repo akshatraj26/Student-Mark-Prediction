@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student Mark Predictor ML web Application</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+    <form class="form" action= "{{ url_for('predict') }}" method="POST">
+      <section class="vh-75 gradient-custom">
+          <div class="container py-3 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-75">
+              <div class="col-12 col-md-4 col-lg-6 col-xl-5">
+                <div class="card form-element" style="border-radius: 1rem;">
+                  <div class="card-body p-3 text-center">
+                    
+        
+                    <div class="mb-md-3 mt-md-3 pb-5">
+        
+                      <h1 class="fw-bold mb-2 text-white">Predict Marks</h1>
+                      <h4 class="text-white my-4 text-center">Enter the Study Hour and number of courses to forecast the Marks</h4>
+
+                      
+                        {% for message in get_flashed_messages() %}
+                        <div class="mb-md-3 mt-md-3 alert alert-danger alert-dismissible fade show" role='alert'>
+                          <p>{{ message }}</p>
+                        </div>
+
+                      {% endfor %}
+
+                      <div class="form-outline mb-4">
+                        
+                        <input type="number" class="form-control form-control-lg no-spinner" name="NumofCourses" placeholder="Number of Courses" max="8" required />
+                      
+                      </div>
+                      
+
+                      <div class="form-outline mb-4">
+                        
+                        <input type="number" class="form-control form-control-lg no-spinner" name="Study_Hour" placeholder="Study Hours" max='24' required />
+                      
+                      </div>
+                      
+                      <button type = 'submit' class= "btn btn-success submit">Predict Marks</button>
+                      <!-- Show predicted Output using ML Model -->
+                      <div class="mb-md-3 mt-md-3 pb-5">
+                          <h2>{{ message }}</h2>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+      
+    
+    <script src="{{ url_for('static', filename='script.js' )}}" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+       
+  </body>
+</html>
+
+
+
