@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <form class="form" action= "{{ url_for('predict') }}" method="POST">
+    
       <section class="vh-75 gradient-custom">
           <div class="container py-3 h-100">
             <div class="row d-flex justify-content-center align-items-center h-75">
@@ -21,10 +21,10 @@
                 <div class="card form-element" style="border-radius: 1rem;">
                   <div class="card-body p-3 text-center">
                     
-        
+                    <h1 class="fw-bold mb-2 text-white text-center">Student Mark Predictor</h1>
                     <div class="mb-md-3 mt-md-3 pb-5">
-        
-                      <h1 class="fw-bold mb-2 text-white">Student Mark Predictor</h1>
+                    <form class="form" action= "{{ url_for('predict') }}" method="POST">
+                      
                       <h4 class="text-white my-4 text-center">Enter the Study Hour and number of courses to forecast the Marks</h4>
 
                       
@@ -50,11 +50,11 @@
                       
                       <button type = 'submit' class= "btn btn-success submit">Predict Marks</button>
                       <!-- Show predicted Output using ML Model -->
-                      <div class="mb-md-3 mt-md-3 pb-5">
+                     
                           
-                          <p class="text-white">{{ message }}</p>
-                      </div>
-                      
+                          <p class="text-white mt-3">{{ message }}</p>
+                     
+                        </form>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
             </div>
           </div>
         </section>
-      </form>
+      
       
     
     <script src="{{ url_for('static', filename='script.js' )}}" async defer></script>

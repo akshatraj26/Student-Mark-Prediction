@@ -49,10 +49,10 @@ def predict():
         if number_of_courses> 8:
             flash("Don't take to many courses in a college or Your mind will start to hank")
             return redirect(url_for('home'))
-        # input_features = [int(x) for x in request.form.values()]
         
-        print("Number of Courses: ", number_of_courses)
-        print('Study Hours :', study_hour)
+        
+        # print("Number of Courses: ", number_of_courses)
+        # print('Study Hours :', study_hour)
 
         # validate input hour
         if study_hour < 0 or study_hour > 24:
@@ -82,7 +82,7 @@ def predict():
             
             db.session.add(new_entry)
             db.session.commit()
-            return render_template('index.html', message = "Based on our prediction, if you study for  {}  hours per day, you might achieve   {}% marks.".format(str(study_hour), float(prediction)))
+            return render_template('index.html', message = "According to our prediction, by taking {} courses and dedicating {} hours per day to studying, you're likely to achieve {}% in marks.".format(number_of_courses, study_hour, prediction))
         except Exception as e:
             flash('There was some problem showing or saving your results', 'danger')
             print(str(e))
