@@ -1,0 +1,6 @@
+services:
+  mark-predictor:
+    build: .
+    ports:
+      - "8000:5000"
+
